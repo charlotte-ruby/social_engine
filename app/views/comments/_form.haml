@@ -1,0 +1,8 @@
+.se-comment-form
+  =semantic_form_for [commentable,comment] do |f|
+    = f.inputs do
+      -unless current_user
+        = render "common/user_attributes", options: options, f: f
+      = f.input :comment, :label=> options[:comment][:label]
+    = f.buttons do
+      =f.commit_button options[:comment][:button_text]

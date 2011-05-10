@@ -1,0 +1,5 @@
+Autotest.add_hook(:initialize) {|at|
+  at.add_mapping(%r%^/rails_plugins/mine/social_engine/app/(models|controllers|helpers|lib)/.*rb$%, true) {
+      at.files_matching %r%^spec/models/.*_spec.rb$%
+    }
+}

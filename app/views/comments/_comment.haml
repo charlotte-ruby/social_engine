@@ -1,0 +1,11 @@
+.se-comment{:id=>div_id(comment)}
+  .se-comment-body
+    =comment.comment
+  -if options[:show_posted_by] or options[:date]
+    .se-comment-info
+      -if options[:show_posted_by]
+        .se-comment-posted-by
+          \Posted by #{comment.name} 
+      -if options[:date]
+        .se-comment-date
+          =comment.created_at.strftime(options[:date])

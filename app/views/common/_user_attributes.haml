@@ -1,0 +1,6 @@
+-if options[:name]
+  = f.input :unauthenticated_name, :label=> options[:name][:label], :required=>options[:name][:required]
+-if options[:email]
+  = f.input :unauthenticated_email, :label=> options[:email][:label], :required=>options[:email][:required]
+-if options[:website]
+  = f.input :unauthenticated_website, :label=> options[:website][:label], :required=>options[:website][:required]

@@ -1,0 +1,6 @@
+.se-rating-form
+  =semantic_form_for [rateable,rating] do |f|
+    = f.inputs do
+      = f.input :value, :as=>:radio, :collection=>(1..options[:max_value]).to_a, :label=>""
+    = f.buttons do
+      =f.commit_button options[:button_text]

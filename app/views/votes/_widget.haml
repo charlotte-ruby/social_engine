@@ -1,0 +1,13 @@
+.se-vote-widget
+  .se-vote-up
+    =semantic_form_for [voteable,Vote.new(value:1)] do |f|
+      = f.input :value, :as=>:hidden
+      = f.buttons do
+        =f.commit_button options[:upvote_text]
+  .se-vote-score
+    =voteable.vote_sum
+  .se-vote-down
+    =semantic_form_for [voteable,Vote.new(value:-1)] do |f|
+      = f.input :value, :as=>:hidden
+      = f.buttons do
+        =f.commit_button options[:downvote_text]

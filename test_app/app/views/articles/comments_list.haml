@@ -1,0 +1,5 @@
+#default-comments-list
+  =comments_list(Article.first)
+
+#custom-comments-list
+  =comments_list(Article.first, :show_posted_by=>false, :date=>"%Y-%m-%d", :order=>"ASC", :limit=>1)

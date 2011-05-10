@@ -1,0 +1,33 @@
+=link_to "Login", login_url
+%h1= @article.name
+=tweetme
+=fb_like
+=fb_friend_box
+
+#default-vote-widget
+  =vote_widget(@article)
+#custom-vote-widget
+  =vote_widget(@article, :upvote_text=>"MoveUp", :downvote_text=>"MoveDown")
+
+#default-favorites-widget
+  =favorites_widget(@article)
+#custom-favorites-widget
+  =favorites_widget(@article, :add_text=>"Like", :remove_text=>"Unlike")
+
+%h2 Rate this article:
+
+#default-rating-form
+  =rating_form(@article)
+#custom-rating-form
+  =rating_form(@article,:button_text=>"CustomRate",:max_value=>8)
+  
+#rating-area
+  =@article.avg_rating
+  %br
+  =@article.rating_count
+
+#custom-rating-area
+
+%h2 Leave a comment:
+=comments_list(@article)
+=comment_form(@article)

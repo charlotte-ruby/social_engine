@@ -1,0 +1,21 @@
+#se-reputation-actions-list
+  %h1 Reputation Actions
+  #se-new-reputation-action-link
+    =link_to "Add New Reputation Action", new_reputation_action_url
+  %table{:id=>"businesses-table"}
+    %thead
+      %tr
+        %th Name
+        %th Value
+        %th
+        %th
+        %tbody
+          - @reputation_actions.each do |rep_action|
+            %tr
+              %td= rep_action.name
+              %td= rep_action.value
+              %td= link_to "Edit", edit_reputation_action_url(rep_action)
+              %td= link_to "Edit", edit_reputation_action_url(rep_action), :method=>"destroy", :confirm=>"Are you sure you want to delete"
+
+      
+  

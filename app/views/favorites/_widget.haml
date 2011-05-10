@@ -1,0 +1,8 @@
+- if current_user
+  .se-favorite{:id=>"favorite-#{div_id(favoriteable)}"}
+    - if current_user.favorites.include?(favorite)
+      =button_to options[:remove_text], "/#{favoriteable.class.to_s.underscore.pluralize}/#{favoriteable.id}/favorites/#{favorite.id}", :method=>:delete, :class=>"se-favorite-delete"
+    - else
+      =semantic_form_for [favoriteable,Favorite.new] do |f|
+        = f.buttons do
+          =f.commit_button options[:add_text], :class=>"se-favorite-add"

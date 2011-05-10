@@ -1,0 +1,2 @@
+class ThirdPartyController < ApplicationController
+end

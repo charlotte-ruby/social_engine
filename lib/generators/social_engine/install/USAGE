@@ -1,0 +1,14 @@
+Description:
+    This generator creates your db migrations, configuration file and css used by social_engine
+
+Example:
+    rails generate social_engine
+
+    This will create:
+        db/migrations/create_comments_table.rb
+        db/migrations/create_votes_table.rb
+        db/migrations/create_ratings_table.rb
+        db/migrations/create_favorites_table.rb
+        public/stylesheets/social_engine.css
+        public/stylesheets/formtastic.css
+        config/yettings/social_engine.yml

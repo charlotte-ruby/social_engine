@@ -1,0 +1,26 @@
+/** COMMENT CLASSES **/
+.se-comment{}
+.se-comment-body{}
+.se-comment-info{}
+.se-comment-posted-by{}
+.se-comment-date{}
+.se-comments-list{}
+
+/** RATING CLASSES **/
+.se-rating-form{}
+.se-rating-value-text{}
+  
+/** VOTE CLASSES **/
+.se-vote-widget{}
+.se-vote-score{}
+.se-vote-up{}
+.se-vote-down{}
+  
+/** REPUTATION ACTION IDs **/
+#se-reputation-action-form{}
+#se-edit-reputation-action{}
+#se-reputation-actions-list{}
+#se-new-reputation-action-link{}
+#se-new-reputation-action{}
+#se-reputation-action-source-list{}
+  

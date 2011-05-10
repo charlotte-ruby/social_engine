@@ -1,0 +1,10 @@
+<meta property="og:title" content="<%=options[:title]%>" />
+<meta property="og:type" content="<%=options[:type]%>" />
+<meta property="og:url" content="<%=options[:url]%>" />
+<meta property="og:image" content="<%=options[:image]%>" />
+<meta property="og:site_name" content="<%=options[:site_name]%>" />
+<% if options[:app_id] %>
+<meta property="fb:app_id" content="<%=options[:app_id]%>" />
+<% else %>
+<meta property="fb:admins" content="<%=options[:admins]%>" />
+<% end %>

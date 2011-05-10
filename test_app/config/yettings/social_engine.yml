@@ -1,0 +1,87 @@
+defaults: &defaults
+
+  # fingerprint_method protects the site from a single user voting or rating more than once
+  # Acceptable Values:
+  ## session_hash - uses rails session.  can be bypassed by clearing cache
+  ## browser_header - uses http header info.  can be bypassed by changing browsers, but also might return a false if 2 browsers pass the same header info
+  ## ip_address - based on user's ip address.  User has to change computers or IP addresses to bypass.  Returns false positives for people sharing an IP address (this is common)
+  ## ip_browser_header - uses IP plus the browser header.  This may prevent some false positives caused by IP only fingerprint
+  ## none - do I have to tell you?
+  fingerprint_method: ip_address
+  
+  reputation:
+    update_user_model: false
+    user_model_rep_field_name: reputation
+  
+  tweetme:
+    count: horizontal
+    div_class: se-tweetme
+    
+  fb_like:
+    layout: standard
+    faces: true
+    width: 450
+    action: like
+    font: lucida grande
+    colorscheme: light
+    div_class: se-fblike
+    
+  fb_og_tags:
+    title: Your Title Here
+    type: website
+    url: http://www.couponshack.com
+    image: http://www.couponshack.com/images/logo.png
+    site_name: CouponShack.com
+    admins: 1234567
+    
+  fb_friend_box:
+    width: 250
+    stream: false
+    header: true
+    faces: true
+    fb_page_url: http://www.facebook.com/couponshack #EXAMPLE: CHANGE THIS TO YOUR PAGE!
+    div_class: se-fb-friend-box
+    
+  fb_javascript_sdk:
+    app_id: 123456789
+    
+  comment_form:
+    name:
+      label: Name
+      required: true
+    email:
+      label: Email
+      required: true
+    website:
+      label: Website
+      required: false
+    comment:
+      label: Comment
+      button_text: Add Comment
+      
+  comment_list:
+    show_posted_by: true
+    date: "%m/%d/%Y at %H:%M"
+    order: "DESC"
+    display_limit: false
+    
+  favorites_widget:
+    remove_text: "Remove from favorites"
+    add_text: "Add to favorites"
+    
+  vote_widget:
+    upvote_text: Upvote
+    downvote_text: Downvote
+    
+  rating_form:
+    max_value: 5
+    button_text: "Rate It"
+    
+development:
+  <<: *defaults
+  
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

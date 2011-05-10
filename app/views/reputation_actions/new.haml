@@ -1,0 +1,9 @@
+#se-new-reputation-action
+  %h1 New Reputation Action
+  =render "form"
+#se-reputation-action-source-list
+  %h2 Source Actions
+  - ReputationAction.list_from_rails_source.each do |action|
+    = action
+    ,
+  
