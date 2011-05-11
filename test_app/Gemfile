@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'social_engine', :path=>'/rails_plugins/mine/social_engine'
+gem 'social_engine', :git=>'git://github.com/charlotte-ruby/social_engine.git'
 
 group :test do
   gem 'cucumber'
