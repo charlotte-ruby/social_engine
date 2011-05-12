@@ -46,6 +46,12 @@ When you add this line to your model, it makes it rateable, voteable and comment
       is_favoriteable
     end
     
+You will also need to add nested resources to the Article route.  In config/routes.rb:
+
+    resources :articles do
+      resources :comments,:votes,:ratings,:favorites
+    end
+
 Make your user model social and make it have reputation
 
     class User < ActiveRecord::Base
