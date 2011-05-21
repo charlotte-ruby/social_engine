@@ -1,5 +1,29 @@
-one:
+john:
   id: 1
   name: John McAliley
   email: john@couponshack.com
   website: http://www.couponshack.com
+jay:
+  id: 2
+  name: Jay McAliley
+  email: jay.mcaliley@gmail.com
+johns_friend:
+  id: 3
+  name: "John's Friend"
+  email: name@example.com
+jays_friend:
+  id: 4
+  name: "Jay's Friend"
+  email: name2@example.com
+everyones_friend:
+  id: 5
+  name: "Everyone's Friend"
+  email: name3@example.com
+rejected_friend:
+  id: 6
+  name: "Rejected Friend"
+  email: name4@example.com
+pending_friendor:
+  id: 7
+  name: "Pending Friendor"
+  email: name5@example.com

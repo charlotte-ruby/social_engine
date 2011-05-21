@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/charlotte-ruby/social_engine.git
-  revision: 5736c9f199970f90f443640f22d9582823a4fad5
+PATH
+  remote: ../
   specs:
     social_engine (0.0.0)
       formtastic

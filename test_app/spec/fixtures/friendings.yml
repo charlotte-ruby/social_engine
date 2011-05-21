@@ -1,0 +1,50 @@
+one:
+  friendor_id: 1
+  friendee_id: 3
+  confirmed: true
+  rejected: false
+two:
+  friendor_id: 2
+  friendee_id: 4
+  confirmed: true
+  rejected: false
+three:
+  friendor_id: 5
+  friendee_id: 1
+  confirmed: true
+  rejected: false
+four:
+  friendor_id: 5
+  friendee_id: 2
+  confirmed: true
+  rejected: false
+five:
+  friendor_id: 5
+  friendee_id: 3
+  confirmed: true
+  rejected: false
+six:
+  friendor_id: 5
+  friendee_id: 4
+  confirmed: true
+  rejected: false
+seven:
+  friendor_id: 5
+  friendee_id: 6
+  confirmed: true
+  rejected: false
+eight:
+  friendor_id: 5
+  friendee_id: 7
+  confirmed: true
+  rejected: false
+nine:
+  friendor_id: 6
+  friendee_id: 2
+  confirmed: false
+  rejected: true
+ten:
+  friendor_id: 7
+  friendee_id: 2
+  confirmed: false
+  rejected: false
