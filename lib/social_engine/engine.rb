@@ -9,6 +9,7 @@ module SocialEngine
       ActiveRecord::Base.extend SocialEngine::Rateable
       ActiveRecord::Base.extend SocialEngine::Favoriteable
       ActiveRecord::Base.extend SocialEngine::Reputatable
+      ActiveRecord::Base.extend SocialEngine::Friendable
       ActiveRecord::Base.extend SocialEngine::Sociable
       ActiveRecord::Base.extend SocialEngine::SocialUser      
     end

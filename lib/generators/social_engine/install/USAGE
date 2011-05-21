@@ -9,6 +9,9 @@ Example:
         db/migrations/create_votes_table.rb
         db/migrations/create_ratings_table.rb
         db/migrations/create_favorites_table.rb
+        db/migrations/create_reputations_table.rb
+        db/migrations/create_reputation_actions_table.rb
+        db/migrations/create_friendings_table.rb
         public/stylesheets/social_engine.css
         public/stylesheets/formtastic.css
         config/yettings/social_engine.yml
