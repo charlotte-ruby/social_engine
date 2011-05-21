@@ -12,6 +12,8 @@ defaults: &defaults
   reputation:
     update_user_model: false
     user_model_rep_field_name: reputation
+
+  confirm_friends: true
   
   tweetme:
     count: horizontal

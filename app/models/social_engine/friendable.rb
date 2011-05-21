@@ -3,28 +3,36 @@ module SocialEngine
     def is_friendable
 
       # Setup conditions
-      confirmed = 'friendings.confirmed = ?'
-      rejected = 'friendings.rejected = ?'
-      active = ["#{confirmed} AND #{rejected}", true, false]
-      pending = [confirmed, false]
-      requested = ["#{confirmed} AND #{rejected}", false, false]
+      active = ["confirmed = ? AND rejected = ?", true, false]
+      pending = ["confirmed = ?", false]
+      requested = ["confirmed = ? AND rejected = ?", false, false]
+      rejected = ["rejected = ?", true]
 
-      has_and_belongs_to_many :friendors, :join_table=>:friendings,
-        :foreign_key=>:friendee_id, :association_foreign_key=>:friendor_id,
-        :conditions=>active, :class_name=>'User'
-      has_and_belongs_to_many :friendees, :join_table=>:friendings,
-        :foreign_key=>:friendor_id, :association_foreign_key=>:friendee_id,
-        :conditions=>active, :class_name=>'User'
-      has_and_belongs_to_many :pending_friends, :join_table=>:friendings,
-        :foreign_key=>:friendor_id, :association_foreign_key=>:friendee_id,
-        :conditions=>pending, :class_name=>'User'
-      has_and_belongs_to_many :friend_requests, :join_table=>:friendings,
-        :foreign_key=>:friendee_id, :association_foreign_key=>:friendor_id,
-        :conditions=>requested, :class_name=>'User'
-      has_and_belongs_to_many :rejected_friends, :join_table=>:friendings,
-        :foreign_key=>:friendee_id, :association_foreign_key=>:friendor_id,
-        :conditions=>rejected, :class_name=>'User'
-               
+      # Active friendships
+      has_many :friendorings, :class_name=>'Friending',
+               :foreign_key=>:friendee_id, :conditions=>active
+      has_many :friendeeings, :class_name=>'Friending',
+               :foreign_key=>:friendor_id, :conditions=>active
+      # Pending friend requests from the user
+      has_many :pending_friendships, :class_name=>'Friending',
+               :foreign_key=>:friendor_id, :conditions=>pending
+      # Pending friend requests to the user
+      has_many :friend_requests, :class_name=>'Friending',
+               :foreign_key=>:friendee_id, :conditions=>requested
+      # Friend requests rejected by the user
+      has_many :friend_rejections, :class_name=>'Friending',
+               :foreign_key=>:friendee_id, :conditions=>rejected
+
+      # Friend relations (these return collections of Users)
+      has_many :friendors, :through=>:friendorings, :class_name=>'User'
+      has_many :friendees, :through=>:friendeeings, :class_name=>'User'
+      has_many :pending_friends, :through=>:pending_friendships,
+               :source=>:friendee, :class_name=>'User'
+      has_many :requesting_friends, :through=>:friend_requests,
+               :source=>:friendor, :class_name=>'User'
+      has_many :rejected_friends, :through=>:friend_rejections,
+               :source=>:friendor, :class_name=>'User'
+
       include InstanceMethods
     end
     
@@ -35,6 +43,11 @@ module SocialEngine
       
       def friends
         self.friendors + self.friendees
+      end
+
+      def add_friend(user)
+        Friending.create(:friendor_id=>self.id, :friendee_id=>user.id,
+                         :confirmed=>!SocialEngineYetting.confirm_friends)
       end
       
     end

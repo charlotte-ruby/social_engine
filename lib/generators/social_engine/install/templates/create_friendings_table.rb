@@ -1,6 +1,6 @@
 class CreateFriendingsTable < ActiveRecord::Migration
   def self.up
-    create_table :friendings, :force => true, :id => false do |t|
+    create_table :friendings, :force => true do |t|
       t.integer :friendor_id
       t.integer :friendee_id
       t.boolean :confirmed, :default => false

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20110521190117) do
     t.datetime "updated_at"
   end
 
-  create_table "friendings", :id => false, :force => true do |t|
+  create_table "friendings", :force => true do |t|
     t.integer  "friendor_id"
     t.integer  "friendee_id"
     t.boolean  "confirmed",   :default => false

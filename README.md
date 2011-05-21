@@ -1,6 +1,6 @@
 # social_engine
 
-social_engine is a rails engine that provides very basic social functionality that you can attach to any model, including comments, ratings, voting, favorites and user reputation.  This plugin is intended to provide you with building blocks, as opposed to a full blown social networking site.  Each building block is customizable and social_engine provides the controllers, helpers, models and css friendly views.  You just include the helpers in your view, provide any non-default options and customize the look using CSS.  This is only compatible with Rails 3 and Ruby 1.9.2.
+social_engine is a rails engine that provides very basic social functionality that you can attach to any model, including comments, ratings, voting, favorites, user reputation, and friend relations.  This plugin is intended to provide you with building blocks, as opposed to a full blown social networking site.  Each building block is customizable and social_engine provides the controllers, helpers, models and css friendly views.  You just include the helpers in your view, provide any non-default options and customize the look using CSS.  This is only compatible with Rails 3 and Ruby 1.9.2.
 
 ## Installation
 
@@ -28,6 +28,7 @@ This will add the following tables to your database:
     favorites
     reputations
     reputation_actions
+    friendings
 
 ## Usage
 
@@ -58,6 +59,15 @@ Make your user model social and make it have reputation
       has_reputation
       is_social
     end
+
+If you want users to also be able to 'friend' each other, just add this
+
+    class User < ActiveRecord::Base
+      has_reputation
+      is_social
+      is_friendable
+    end
+
 
 ## View helpers
 
@@ -261,6 +271,37 @@ Or if you choose not to add that field, you can get the reputation this way:
 
     User.first.reputations.sum(:value)
 
+### Friends
+By making your User model friendable, you allow users to request friends and to confirm or reject friendship requests that come their way. The friendship model is directional, meaning it distinguishes between the friendor and the friendee. This may be useful for situations where users can "follow" others, while having many followers.
+
+You can have @user request to be friends with @other_user
+    @user.add_friend(@other_user)
+
+Get the last user who requested to be friends with @other_user
+    @other_user.requesting_friends.last #=> @user
+
+You can get the same result through the Friending record for that request
+    @other_user.friend_requests.last.friendor #=> @user
+
+Confirm the request
+    @other_user.friend_requests.last.confirm
+
+Or reject it
+    @other_user.friend_requests.last.reject
+
+If you want your app to skip the confirmation step and automatically activate all friend requests, set confirm_friends to "false" in config/yettings/social_engine.yml
+
+You also get the following instance methods for your users
+    @user.friends #=> Return collection of users that are friends with @user
+    @user.friendors #=> Only list friends that have requested friendship with @user
+    @user.friendees #=> Only list friends that @user has requested friendship with
+
+These methods return only friends that are confirmed and not rejected. To get info on unconfirmed friends:
+    @user.pending_friends #=> Return users that have not confirmed friendship requests from @user. This will include users that have rejected a friendship request from @user.
+    @user.requesting_friends #=> Return users that have requested to be friends with @user, but which @user has not confirmed
+    @user.rejected_friends #=> users from which @user has rejected a friendship request
+
+The above methods are all associated with collections of Friending instances, which can be obtainer from the friendorings, friendeeings, pending_friendships, friend_requests, and friend_rejections instance methods for User.
 
 ## Development Roadmap / TODO
 ###Features
