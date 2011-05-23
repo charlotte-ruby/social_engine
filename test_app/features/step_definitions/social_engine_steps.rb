@@ -6,6 +6,7 @@ MIGRATION_FILES = ["create_comments_table",
                    "create_favorites_table",
                    "create_reputations_table",
                    "create_reputation_actions_table",
+                   "create_friendings_table",
                    "add_reputation_to_users"]
 
 Given 'a working directory' do
@@ -29,7 +30,7 @@ Then /^a file named '(.*)' is created in the '(.*)' directory$/ do |file,dir|
 end
 
 When /^I run the install generator$/ do
-  @generator_output = systemu("rails g social_engine:install")[1]
+  @generator_output = systemu("rails g social_engine:install")
 end
 
 When /^I run the user rep generator$/ do

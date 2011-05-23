@@ -13,7 +13,8 @@ Feature: generating social_engine migrations
     And a timestamped file named 'create_votes_table.rb' is created in the '/db/migrate/' directory
     And a timestamped file named 'create_favorites_table.rb' is created in the '/db/migrate/' directory
     And a timestamped file named 'create_reputations_table.rb' is created in the '/db/migrate/' directory
-    And a timestamped file named 'create_reputation_actions_table.rb' is created in the '/db/migrate/' directory        
+    And a timestamped file named 'create_reputation_actions_table.rb' is created in the '/db/migrate/' directory
+    And a timestamped file named 'create_friendings_table.rb' is created in the '/db/migrate/' directory            
     And a file named 'social_engine.yml' is created in the '/config/yettings/' directory
     And a file named 'social_engine.css' is created in the '/public/stylesheets/' directory
     And a file named 'formtastic.css' is created in the '/public/stylesheets/' directory    

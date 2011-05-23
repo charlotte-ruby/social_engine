@@ -36,12 +36,13 @@ module SocialEngine
       include InstanceMethods
     end
     
-    module InstanceMethods
+    module InstanceMethods      
       def friendable?
         true
       end
       
-      def friends
+      def friends(expire_association_cache=false)
+        return self.friendors(true) + self.friendees(true) if expire_association_cache
         self.friendors + self.friendees
       end
 

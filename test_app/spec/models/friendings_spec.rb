@@ -56,12 +56,9 @@ describe Friending do
     john.should have(1).requesting_friends
     john.requesting_friends.should include(jay)
     john.friends.should_not include(jay)
-    puts john.friend_requests.inspect
     john.friend_requests.last.confirm
-    puts john.friend_requests.inspect
-    puts john.friends.inspect
-    #john.should have(3).friends
-    john.requesting_friends.should_not include(jay)
+    john.should have(3).friends(true)
+    john.requesting_friends(true).should_not include(jay)
     john.friends.should include(jay)
   end
 end
