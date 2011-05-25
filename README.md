@@ -275,28 +275,35 @@ Or if you choose not to add that field, you can get the reputation this way:
 By making your User model friendable, you allow users to request friends and to confirm or reject friendship requests that come their way. The friendship model is directional, meaning it distinguishes between the friendor and the friendee. This may be useful for situations where users can "follow" others, while having many followers.
 
 You can have @user request to be friends with @other_user
+
     @user.add_friend(@other_user)
 
 Get the last user who requested to be friends with @other_user
+
     @other_user.requesting_friends.last #=> @user
 
 You can get the same result through the Friending record for that request
+
     @other_user.friend_requests.last.friendor #=> @user
 
 Confirm the request
+
     @other_user.friend_requests.last.confirm
 
 Or reject it
+
     @other_user.friend_requests.last.reject
 
 If you want your app to skip the confirmation step and automatically activate all friend requests, set confirm_friends to "false" in config/yettings/social_engine.yml
 
 You also get the following instance methods for your users
+
     @user.friends #=> Return collection of users that are friends with @user
     @user.friendors #=> Only list friends that have requested friendship with @user
     @user.friendees #=> Only list friends that @user has requested friendship with
 
 These methods return only friends that are confirmed and not rejected. To get info on unconfirmed friends:
+
     @user.pending_friends #=> Return users that have not confirmed friendship requests from @user. This will include users that have rejected a friendship request from @user.
     @user.requesting_friends #=> Return users that have requested to be friends with @user, but which @user has not confirmed
     @user.rejected_friends #=> users from which @user has rejected a friendship request
