@@ -11,6 +11,11 @@ class FavoritesController < InheritedResources::Base
   end
   
   def destroy
-    destroy!{:back}
+    def destroy
+      destroy! do |success, failure|
+        success.html{redirect_to :back}
+        failure.html{redirect_to :back}
+      end
+    end
   end
 end
