@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{social_engine}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["John McAliley"]
-  s.date = %q{2011-05-09}
+  s.authors = [%q{John McAliley}]
+  s.date = %q{2011-07-01}
   s.description = %q{social_engine}
   s.email = %q{john@couponshack.com}
   s.extra_rdoc_files = [
@@ -29,11 +29,13 @@ Gem::Specification.new do |s|
     "app/helpers/social_engine_helper.rb",
     "app/models/comment.rb",
     "app/models/favorite.rb",
+    "app/models/friending.rb",
     "app/models/rating.rb",
     "app/models/reputation.rb",
     "app/models/reputation_action.rb",
     "app/models/social_engine/commentable.rb",
     "app/models/social_engine/favoriteable.rb",
+    "app/models/social_engine/friendable.rb",
     "app/models/social_engine/helpers.rb",
     "app/models/social_engine/rateable.rb",
     "app/models/social_engine/reputatable.rb",
@@ -65,6 +67,7 @@ Gem::Specification.new do |s|
     "lib/generators/social_engine/install/install_generator.rb",
     "lib/generators/social_engine/install/templates/create_comments_table.rb",
     "lib/generators/social_engine/install/templates/create_favorites_table.rb",
+    "lib/generators/social_engine/install/templates/create_friendings_table.rb",
     "lib/generators/social_engine/install/templates/create_ratings_table.rb",
     "lib/generators/social_engine/install/templates/create_reputation_actions_table.rb",
     "lib/generators/social_engine/install/templates/create_reputations_table.rb",
@@ -82,13 +85,12 @@ Gem::Specification.new do |s|
     "social_engine.gemspec"
   ]
   s.homepage = %q{http://github.com/johnmcaliley/social_engine}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
   s.summary = %q{social_engine}
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
