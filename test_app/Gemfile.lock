@@ -102,7 +102,7 @@ GEM
     mime-types (1.25.1)
     mini_portile2 (2.8.0)
     multi_json (1.14.1)
-    nokogiri (1.13.3)
+    nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     polyglot (0.3.5)
